@@ -32,14 +32,10 @@ void setup() {
      cam = new Capture(this, 640, 480, "HD Pro Webcam C920", 30);
      **/
 
-
-    //
-    // 
-    /**     
-     This is the solution, set device-index to whichever index your camera is from the Capture.list array
+    /**
+     This was my solution, set device-index to whichever index your camera is from the Capture.list array
      **/
-     cam = new Capture(this, "pipeline:avfvideosrc device-index=1");
-
+    cam = new Capture(this, "pipeline:avfvideosrc device-index=1");
   }
 
   // Start capturing the images from the camera
