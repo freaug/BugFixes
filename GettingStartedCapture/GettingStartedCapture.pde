@@ -1,7 +1,7 @@
 /**
  * Getting Started with Capture.
- * 
- * Reading and displaying an image from an attached Capture device. 
+ *
+ * Reading and displaying an image from an attached Capture device.
  */
 
 import processing.video.*;
@@ -25,11 +25,21 @@ void setup() {
 
     // The camera can be initialized directly using an element
     // from the array returned by list():
-    cam = new Capture(this, 640, 680, "HD Pro Webcam C920", 30); //pipeline:avfvideosrc device-index=1
 
-    // Or, the camera name can be retrieved from the list (you need
-    // to enter valid a width, height, and frame rate for the camera).
-    //cam = new Capture(this, 640, 480, "FaceTime HD Camera (Built-in)", 30);
+    /**
+     These only work with the default camera on my computer
+     cam = new Capture(this, cameras[1]);
+     cam = new Capture(this, 640, 480, "HD Pro Webcam C920", 30);
+     **/
+
+
+    //
+    // 
+    /**     
+     This is the solution, set device-index to whichever index your camera is from the Capture.list array
+     **/
+     cam = new Capture(this, "pipeline:avfvideosrc device-index=1");
+
   }
 
   // Start capturing the images from the camera
@@ -41,8 +51,8 @@ void draw() {
     cam.read();
   }
   image(cam, 0, 0, width, height);
-  // The following does the same as the above image() line, but 
-  // is faster when just drawing the image without any additional 
+  // The following does the same as the above image() line, but
+  // is faster when just drawing the image without any additional
   // resizing, transformations, or tint.
   //set(0, 0, cam);
 }
